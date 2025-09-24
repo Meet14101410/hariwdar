@@ -1,0 +1,42 @@
+class HaridwarInfoSystem:
+    """A basic information system for Haridwar city."""
+    
+    def __init__(self):
+        self.city_facts = {
+            "Location": "Uttarakhand, India",
+            "Population": "Approx. 230,000 (2023)",
+            "Known For": "Hindu pilgrimage site, Ganga Aarti, and temples"
+        }
+        self.points_of_interest = [
+            {"name": "Har Ki Pauri", "type": "Ghat", "description": "The most sacred ghat in Haridwar, known for the evening Ganga Aarti."},
+            {"name": "Mansa Devi Temple", "type": "Religious Site", "description": "A popular temple on a hilltop, accessible by ropeway."},
+            {"name": "Chandi Devi Temple", "type": "Religious Site", "description": "Another hilltop temple dedicated to Goddess Chandi."}
+        ]
+
+    def get_city_fact(self, fact_name):
+        """Retrieves and prints a specific city fact."""
+        if fact_name in self.city_facts:
+            print(f"{fact_name}: {self.city_facts[fact_name]}")
+        else:
+            print(f"Fact not found: {fact_name}")
+
+    def search_points_of_interest(self, search_term):
+        """Searches for points of interest by name or type."""
+        print(f"\n--- Search Results for '{search_term}' ---")
+        found = False
+        for poi in self.points_of_interest:
+            if search_term.lower() in poi["name"].lower() or search_term.lower() in poi["type"].lower():
+                print(f"Name: {poi['name']}")
+                print(f"Type: {poi['type']}")
+                print(f"Description: {poi['description']}")
+                print("-" * 40)
+                found = True
+        if not found:
+            print("No matching points of interest found.")
+
+# Main script logic
+info_system = HaridwarInfoSystem()
+info_system.get_city_fact("Population")
+info_system.get_city_fact("Known For")
+info_system.search_points_of_interest("Temple")
+info_system.search_points_of_interest("Ghat")
